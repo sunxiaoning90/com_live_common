@@ -3,9 +3,20 @@
 *@Date 2022/1/21 17:04
 */
 
+一、目录概要
+base
+config
+conver
+convertor
+sm
+httpUtil
+file
+jdbc
+log
+util
+
+二、初始化git
 ### …or create a new repository on the command line
-
-
 
 ```
 echo "# com_live_common" >> README.md
