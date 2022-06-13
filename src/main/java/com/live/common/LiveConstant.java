@@ -78,11 +78,22 @@ public class LiveConstant {
 
     }
 
-    /*public static void main(String[] args) {
-        String simpleName = Charset.defaultCharset().getClass().getSimpleName();
-        System.out.println(simpleName);
-        System.out.println(CharsetConstant.UTF8);
-    }*/
+    public static void main(String[] args) {
+//        String simpleName = Charset.defaultCharset().getClass().getSimpleName();
+//        System.out.println(simpleName);
+//        System.out.println(CharsetConstant.UTF8);
+
+//        LogUtil.log("a");
+//        LogUtil.log("a", "b");
+//        LogUtil.log("a", "b", "c");
+//        LogUtil.log("a", "b", "c", "d");
+//
+//        LogUtil.logByTip("tip", "a", "b", "c", "d");
+//        LogUtil.logByTip("tip", "a");
+//        LogUtil.logByTip("tip", "a", "b");
+//        LogUtil.logByTip("tip", "a", "b", "c");
+//        LogUtil.logByTip("tip", "a", "b", "c", "d");
+    }
 }
 
 

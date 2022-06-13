@@ -1,4 +1,4 @@
-package com.live.common.httpUtil;
+package com.live.common.httpUtil.byHttpURLConnection;
 
 
 import com.live.common.LiveConstant;
@@ -20,13 +20,15 @@ import java.util.Map;
 
 /**
  * Https工具类，兼容Http
+ * TODO 封装 POST类 和 Get类
  * TODO 打印 requestHeader
  *
- * @author live
+ * @Author live
+ * @Date 2022/3/14 17:33
  */
-public class LiveHttpsUtil {
+public class HttpsUtil {
 
-    public static final String DEBUG_TIP = "\t________debugTip(" + LiveHttpsUtil.class.getSimpleName() + ")";
+    public static final String DEBUG_TIP = "\t________debugTip(" + HttpsUtil.class.getSimpleName() + ")";
 
     /**
      * 注意客户端发送请求（Request）时的Content-Type设置
@@ -175,10 +177,6 @@ public class LiveHttpsUtil {
         LiveConstant.LogConstant.beautifyByTip(DEBUG_TIP, "响应结果", result.toString());
         return result.toString();
     }
-
-    /*public static void main(String[] args) {
-        LiveHttpsUtil.post("http://www.baidu.com", "");
-    }*/
 
     /**
      * @author live
