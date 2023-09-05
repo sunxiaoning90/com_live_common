@@ -1,5 +1,7 @@
 package com.live.common.log;
 
+import com.live.common.LiveConstant;
+
 import static com.live.common.LiveConstant.LogConstant;
 
 /**
@@ -9,11 +11,12 @@ import static com.live.common.LiveConstant.LogConstant;
 public class LogUtil {
 
     public static String log(Object... ts) {
-        return LogConstant.beautify(ts);
+        return LiveConstant.LogConstant.beautify(ts);
     }
 
     public static String logByTip(String tip, Object... ts) {
-        return LogConstant.beautifyByTip(tip, ts);
+        return LiveConstant.LogConstant.beautifyByTip("________" + tip, ts);
     }
+
 
 }

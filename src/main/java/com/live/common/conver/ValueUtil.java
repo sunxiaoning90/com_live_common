@@ -10,14 +10,56 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ValueUtil {
 
     private static Logger logger = LogManager.getLogger(ValueUtil.class);
+
+    /**
+     * 逗号分隔的字符串 转为 list
+     */
+    public static List<String> toList(String str) {
+        return toList(str, ",");
+    }
+
+    /**
+     * xxx分隔的字符串 转为 list
+     */
+    public static List<String> toList(String str, String separator) {
+        if (str == null) {
+            return null;
+        }
+        return Arrays.asList(str.split(separator));
+    }
+
+    /**
+     * Set 转 字符串（逗号分隔）
+     *
+     * @param set
+     * @return
+     */
+    public static String setToStringByComma(Set set) {
+        return setToString(set, ",");
+    }
+
+    /**
+     * Set 转 字符串
+     *
+     * @param set
+     * @param splitTag
+     * @return
+     */
+    public static String setToString(Set set, String splitTag) {
+        if (set == null) {
+            return null;
+        }
+
+        Object[] array = set.toArray();
+        String r = StringUtils.join(array, splitTag);
+        System.out.println(r);
+        return r;
+    }
 
     private static ThreadLocal<SimpleDateFormat> longFormat = new ThreadLocal<SimpleDateFormat>() {
         @Override

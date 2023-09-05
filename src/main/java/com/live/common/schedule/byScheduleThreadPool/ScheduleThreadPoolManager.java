@@ -6,7 +6,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * @Author live
- * @Date 2022-04-25 14:21
  */
 public class ScheduleThreadPoolManager {
 
@@ -20,10 +19,10 @@ public class ScheduleThreadPoolManager {
     }
 
     public static ScheduleThreadPoolManager getInstance() {
-        return singletonHolder.instance;
+        return SingletonHolder.instance;
     }
 
-    private static class singletonHolder {
+    private static class SingletonHolder {
         public static final ScheduleThreadPoolManager instance = new ScheduleThreadPoolManager();
     }
 

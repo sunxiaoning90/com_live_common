@@ -59,6 +59,7 @@
             <version>1.46</version>
         </dependency>-->
 
+        <!-- 包括但不限于SM4加密算法 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>

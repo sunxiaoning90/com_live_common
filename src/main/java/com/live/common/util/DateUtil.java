@@ -557,6 +557,7 @@ public class DateUtil {
     }
 
     public static void main(String[] args) {
+        System.out.println(new Date().getDate() == 4);
 //        Date date = DateUtil.getNextHalfHour();
 //        System.out.println(date);
 //

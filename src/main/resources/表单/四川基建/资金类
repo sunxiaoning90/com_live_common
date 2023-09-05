@@ -1,0 +1,15 @@
+vm.customFunction = {
+	/**自定义函数**/
+    created(){
+        debugger;
+
+        //1、接收参数，前一个表单传值
+        if(vm.menuParams['SC_T_PP#MAINID']){
+            vm.formData['SC_T_PP']['MAINID'] = vm.menuParams['SC_T_PP#MAINID']
+        }
+        if(vm.menuParams['SC_T_PP#XIANGMDM']){
+            vm.formData['SC_T_PP']['XIANGMDM'] = vm.menuParams['SC_T_PP#XIANGMDM']
+        }
+
+    }
+}
