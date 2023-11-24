@@ -1,7 +1,10 @@
 package com.live.common.util;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -499,9 +502,6 @@ public class DateUtil {
     /**
      * 判断 一个日期是否在 某个月
      *
-     * @param str1
-     * @param str2
-     * @param format
      * @return
      * @throws ParseException
      */
@@ -534,7 +534,6 @@ public class DateUtil {
     }
 
     /**
-     * 2020-07-03
      * 需求来自：saas平台：1、展示全部域的授权过期信息（授权总数、三天过期个数、五天过期个数、七天过期个数、十五天过期个数）
      */
     /**
@@ -554,6 +553,43 @@ public class DateUtil {
         System.out.println(d1);
         long i = getBetweenForDay(d1, new Date());
         System.out.println(i);
+    }
+
+    public static Date getDate(int hour, int minute, int second, int millisecond) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, hour);
+        c.set(Calendar.MINUTE, minute);
+        c.set(Calendar.SECOND, second);
+        c.set(Calendar.MILLISECOND, millisecond);
+        return c.getTime();
+    }
+
+    public static Date getDate(String HHmm) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime lt = LocalTime.parse(HHmm, formatter);
+        return getDate(lt.getHour(), lt.getMinute(), 0, 0);
+    }
+
+    /**
+     * 获取指定时间相差的毫秒数
+     */
+    public static long getBetweenMills(Date d1, Date d2) {
+        return d1.getTime() - d2.getTime();
+    }
+
+    /**
+     * 获取指定时间相差的秒数
+     */
+    public static long getBetweenSecond(Date d1, Date d2) {
+        BigDecimal second = (BigDecimal.valueOf(getBetweenMills(d1, d2)).divide(BigDecimal.valueOf(1000), BigDecimal.ROUND_UP));
+        return Long.valueOf(second.toString());
+    }
+
+    /**
+     * 获取指定时间与当前时间相差的秒数
+     */
+    public static long getBetweenSecondNow(String HHmm) {
+        return getBetweenSecond(DateUtil.getDate(HHmm), new Date());
     }
 
     public static void main(String[] args) {
