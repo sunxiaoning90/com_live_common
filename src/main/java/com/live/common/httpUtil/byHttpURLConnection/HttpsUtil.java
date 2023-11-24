@@ -203,7 +203,7 @@ public class HttpsUtil {
             HostnameVerifier hv = new HostnameVerifier() {
                 @Override
                 public boolean verify(String urlHostName, SSLSession session) {
-                    LiveConstant.LogConstant.beautify("host", urlHostName, "port", session.getPeerPort());
+                    LiveConstant.LogConstant.beautifyByTip("host", urlHostName, "port", session.getPeerPort());
                     return true;
                 }
             };
@@ -234,7 +234,7 @@ public class HttpsUtil {
             public void checkServerTrusted(X509Certificate[] certs, String authType)
                     throws CertificateException {
                 try {
-                    LiveConstant.LogConstant.beautify("信任证书");
+                    LiveConstant.LogConstant.beautifyByTip("信任证书");
 //                    int a = 1 / 0;
                 } catch (Exception e) {
                     e.printStackTrace();

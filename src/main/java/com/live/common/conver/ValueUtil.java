@@ -1,5 +1,6 @@
 package com.live.common.conver;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -11,27 +12,11 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ValueUtil {
 
     private static Logger logger = LogManager.getLogger(ValueUtil.class);
-
-    /**
-     * 逗号分隔的字符串 转为 list
-     */
-    public static List<String> toList(String str) {
-        return toList(str, ",");
-    }
-
-    /**
-     * xxx分隔的字符串 转为 list
-     */
-    public static List<String> toList(String str, String separator) {
-        if (str == null) {
-            return null;
-        }
-        return Arrays.asList(str.split(separator));
-    }
 
     /**
      * Set 转 字符串（逗号分隔）
@@ -310,4 +295,81 @@ public class ValueUtil {
         return result;
 
     }
+
+    /**
+     * 逗号分隔的字符串 转为 list
+     */
+    public static List<String> toList(String str) {
+        return toList(str, ",");
+    }
+
+    /**
+     * xxx分隔的字符串 转为 list
+     */
+    public static List<String> toList(String str, String separator) {
+        if (str == null) {
+            return null;
+        }
+        return Arrays.asList(str.split(separator));
+    }
+
+    /**
+     * map -> javaBean
+     *
+     * @param map
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T toObject(Map map, Class<T> clazz) {
+        return JSON.parseObject(JSON.toJSONString(map), clazz);
+    }
+
+    public static JSONObject toJson(String jsonStr) {
+        return JSONObject.parseObject(jsonStr);
+    }
+
+    public static Map toMap(String s) {
+        return JSON.parseObject(s, Map.class);
+    }
+
+    public static Map toMap(JSONObject json) {
+        return JSON.parseObject(json.toJSONString(), Map.class);
+    }
+
+    public static Map toMap(Object javabean) {
+        return JSON.parseObject(JSON.toJSONString(javabean), Map.class);
+    }
+
+    public static String warrpJsonStr(String jsonSrc) {
+        if (!jsonSrc.startsWith("%7B") && !jsonSrc.startsWith("{")) {
+            jsonSrc = "{" + jsonSrc + "}";
+        }
+        return jsonSrc;
+    }
+
+    public static String toStr(JSONObject json) {
+        return json.toJSONString();
+    }
+
+    public static List filter(List list, Object target) {
+        List r = (List) list.stream().filter((e) -> {
+            return target.equals(e);
+        }).collect(Collectors.toList());
+
+        return r;
+    }
+
+    public static void main(String[] args) {
+
+
+        List<String> list = new ArrayList<String>();
+        list.add("工商银行");
+        list.add("建设银行");
+
+        System.out.println(filter(list, "建设银行"));
+
+    }
+
 }
+
